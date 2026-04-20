@@ -20,6 +20,10 @@ else:
     session = new_session(MODEL_NAME)
     print("Đang xử lý...")
     for i, img_path in enumerate(images, 1):
+        out_path = output_folder / (img_path.stem + ".png")
+        if out_path.exists():
+            print(f"[{i}/{len(images)}] {img_path.name}... bỏ qua (đã xử lý)")
+            continue
         print(f"[{i}/{len(images)}] {img_path.name}...", end=" ")
         with open(img_path, "rb") as f:
             result = remove(f.read(), session=session)
