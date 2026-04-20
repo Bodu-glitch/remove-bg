@@ -76,7 +76,7 @@ def get_folder(category: str) -> Path | None:
     return None
 
 
-images = sorted(Path("hoan_thien").iterdir())[:10]
+images = sorted(p for p in Path("hoan_thien").iterdir() if p.is_file())
 
 print(f"{'File':<35} {'Tên sản phẩm':<35} {'Phân loại':<25} Đã lưu")
 print("-" * 115)
